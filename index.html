@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LeaderBoard HNG</title>
+		<link rel="stylesheet" type="text/css" href="Style.css" media="screen"/>
+		<script type="text/javascript" src="script.js"></script>
+		
+	</head>
+	<body ng-app="boardApp">
+		
+		<div ng-controller="boardController">
+			
+			<div class="row">
+				
+				<div class="col-xs-12">
+					
+					<div class="tableHeader">LearderBoard-HNG</div>
+				
+				</div>
+			
+			</div>
+			
+			<!--main row -->
+			<div class="row">
+				<div class="col-xs-12">
+					<table class="table-bodered table-hover">
+						<thead>
+							<tr class="campler">
+								<th> # </th>
+								<th> Camper Name </th>
+								<th class="number" ng-click="sortData('recent')"> Last 30 days
+								   <div ng-class="getSortClass('recent')"></div>
+								
+								 </th>
+								 <th class="number" ng-click="sortData('allTime')"> All Time
+								   <div ng-class="getSortClass('allTime')"></div>
+								
+								 </th>
+							</tr>
+						
+						
+						</thead>
+						<tbody ng-repeat="camper in campers  | orderBy:sortColumn : reversSort">
+							<tr class="camper">
+								<td>{{$index+1}}</td>
+								<td class="name">
+									<a href="https://www.freecodecamp.com/{{camper.username}}" target="blank">
+									<img class="profileImg" title={{camper.username}} src={{camper.image}}/>
+									</a>
+									 
+									</td>
+									<td>{{camper.recent}} </td>
+									<td>{{camper.allTime}} </td>
+							
+							</tr>
+						
+						
+						
+						</tbody>
+					
+					</table>
+				
+				</div>
+			</div>
+		 <!-- footer-->
+		
+		</div>
+
+	</body>
+</html>
